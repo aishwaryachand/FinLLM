@@ -1,6 +1,8 @@
 # README.md
 # FinLLM – Financial Document Analytics
 
+![FinLLM Banner](https://github.com/aishwaryachand/FinLLM/blob/main/finllm/third.png)
+
 ## Overview
 FinLLM is a document analytics system that applies Retrieval-Augmented Generation (RAG) and transformer-based models to financial filings and contracts. The system ingests large, complex documents such as SEC 10-K and 10-Q filings, parses them into manageable sections, and enables question-answering, anomaly detection, and compliance scoring.  
 
@@ -13,6 +15,11 @@ The project is designed to demonstrate both technical and product value: a scala
 2. Provide structured insights such as risk factors, anomalies, and compliance gaps.  
 3. Compare zero-shot prompting, RAG-based answering, and fine-tuned models to show measurable performance gains.  
 4. Deliver results through a production-ready API interface.  
+
+---
+![Img 1](https://github.com/aishwaryachand/FinLLM/blob/main/finllm/firstimage.png)
+![FImg 2](https://github.com/aishwaryachand/FinLLM/blob/main/finllm/secondimage.png)
+![Img 3](https://github.com/aishwaryachand/FinLLM/blob/main/finllm/requirements.png)
 
 ---
 
