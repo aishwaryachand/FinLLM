@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FinLLM — Financial Document Intelligence</title>
+  <meta name="description" content="Turn 100-page SEC filings into cited answers in seconds. Finance-native RAG with grounded citations and low latency." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .glass { backdrop-filter: saturate(180%) blur(16px); background: rgba(255,255,255,.7); }
+    .card { border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+    .metric { font-variant-numeric: tabular-nums; }
+    .badge { padding:.25rem .6rem; border-radius:9999px; font-size:.8rem; }
+    .grid-bg { background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 18px 18px; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 glass border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-semibold">
+        <span class="inline-block h-8 w-8 rounded-lg bg-slate-900 text-white grid place-items-center">F</span>
+        <span>FinLLM</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#features" class="hover:text-slate-600">Features</a>
+        <a href="#how" class="hover:text-slate-600">How it Works</a>
+        <a href="#security" class="hover:text-slate-600">Security</a>
+        <a href="#pricing" class="hover:text-slate-600">Pricing</a>
+        <a href="#docs" class="hover:text-slate-600">Docs</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#demo" class="px-4 py-2 rounded-lg border border-slate-300 text-sm hover:bg-slate-50">Try Demo</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-slate-900 text-white text-sm hover:bg-slate-800">Schedule 15-min</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-50"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 relative">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+            Turn 100-page SEC filings into answers you can trust.
+          </h1>
+          <p class="mt-5 text-lg text-slate-700">
+            FinLLM is a finance-native RAG engine that delivers <span class="font-semibold">cited</span> insights from 10-K/10-Q in seconds—grounded, auditable, and fast.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="badge bg-slate-100 border border-slate-200">Grounded</span>
+            <span class="badge bg-emerald-100 border border-emerald-200">Citations</span>
+            <span class="badge bg-sky-100 border border-sky-200">p95 &lt; 1.2s</span>
+          </div>
+          <div class="mt-8 flex gap-3">
+            <a href="#demo" class="px-5 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800">Try the Demo</a>
+            <a href="#docs" class="px-5 py-3 rounded-lg border border-slate-300 hover:bg-slate-50">View Docs</a>
+          </div>
+          <div class="mt-6 text-sm text-slate-600">
+            Built with Python, FastAPI, FAISS, LangChain, and Snowflake.
+          </div>
+        </div>
+
+        <!-- Hero Mock -->
+        <div class="card p-4 lg:p-6 bg-white">
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <div class="bg-slate-50 px-4 py-3 flex items-center justify-between">
+              <div class="text-sm font-medium">FinLLM Demo</div>
+              <div class="text-xs text-slate-500">Cited Mode</div>
+            </div>
+            <div class="p-4 space-y-4">
+              <label class="block text-sm text-slate-600">Ask FinLLM</label>
+              <div class="flex gap-2">
+                <input class="flex-1 rounded-lg border border-slate-300 px-3 py-2" placeholder="What risks impact AAPL's gross margin in 2024?" />
+                <button class="px-4 py-2 rounded-lg bg-slate-900 text-white">Ask</button>
+              </div>
+              <div class="mt-2 text-sm text-slate-700">
+                FinLLM: Gross margin pressure is primarily driven by component costs, FX headwinds, and product mix shift toward services. <sup>[1][2]</sup>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="badge bg-slate-100 border border-slate-200">10-K: AAPL 2024 p.37</span>
+                <span class="badge bg-slate-100 border border-slate-200">10-Q: Q2 FY24 p.12</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="card p-4 text-center">
+              <div class="text-3xl font-semibold metric">Hours → Minutes</div>
+              <div class="text-xs mt-1 text-slate-600">Time to insight</div>
+            </div>
+            <div class="card p-4 text-center">
+              <div class="text-3xl font-semibold metric">100%</div>
+              <div class="text-xs mt-1 text-slate-600">Cited answers</div>
+            </div>
+            <div class="card p-4 text-center">
+              <div class="text-3xl font-semibold metric">&lt;1.2s</div>
+              <div class="text-xs mt-1 text-slate-600">p95 latency</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="border-t border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center text-sm text-slate-600">Trusted for finance research, product analytics, and risk insights</div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">Features</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <h3 class="font-semibold">Cited Answers</h3>
+          <p class="mt-2 text-sm text-slate-700">Inline references to exact filing pages; one click to open the source.</p>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold">Fast & Reliable</h3>
+          <p class="mt-2 text-sm text-slate-700">Optimized retrieval with FAISS and caching for sub-second responses.</p>
+        </div>
+        <div class="card p-6">
+          <h3 class="font-semibold">Analyst-Friendly</h3>
+          <p class="mt-2 text-sm text-slate-700">Export to CSV/PDF, saved queries, and shareable links for team workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-16 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">How it Works</h2>
+      <div class="mt-8 grid lg:grid-cols-4 gap-6">
+        <div class="card p-5">
+          <div class="text-sm font-medium">1. Ingest</div>
+          <p class="text-sm text-slate-700 mt-1">SEC PDFs are parsed and chunked with finance-aware rules.</p>
+        </div>
+        <div class="card p-5">
+          <div class="text-sm font-medium">2. Index</div>
+          <p class="text-sm text-slate-700 mt-1">Embeddings stored in FAISS with metadata for source recall.</p>
+        </div>
+        <div class="card p-5">
+          <div class="text-sm font-medium">3. Retrieve</div>
+          <p class="text-sm text-slate-700 mt-1">Hybrid search + re-ranking finds the most relevant spans.</p>
+        </div>
+        <div class="card p-5">
+          <div class="text-sm font-medium">4. Answer</div>
+          <p class="text-sm text-slate-700 mt-1">LLM synthesizes a concise answer with citations and links.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section id="security" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">Security</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <div class="font-semibold">Data Isolation</div>
+          <p class="text-sm text-slate-700 mt-2">Per-tenant storage and encryption at rest and in transit.</p>
+        </div>
+        <div class="card p-6">
+          <div class="font-semibold">Auditability</div>
+          <p class="text-sm text-slate-700 mt-2">Every answer links to the exact page with timestamped logs.</p>
+        </div>
+        <div class="card p-6">
+          <div class="font-semibold">Controls</div>
+          <p class="text-sm text-slate-700 mt-2">Role-based access and request rate limits by API key.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-16 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">Pricing</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <div class="text-lg font-semibold">Starter</div>
+          <div class="mt-2 text-3xl font-bold">$0</div>
+          <ul class="mt-4 text-sm space-y-2">
+            <li>Public filings</li>
+            <li>10 queries/day</li>
+            <li>Cited answers</li>
+          </ul>
+        </div>
+        <div class="card p-6 border-2 border-slate-900">
+          <div class="text-lg font-semibold">Pro</div>
+          <div class="mt-2 text-3xl font-bold">$29</div>
+          <ul class="mt-4 text-sm space-y-2">
+            <li>Unlimited queries</li>
+            <li>Saved searches</li>
+            <li>Export & API access</li>
+          </ul>
+        </div>
+        <div class="card p-6">
+          <div class="text-lg font-semibold">Enterprise</div>
+          <div class="mt-2 text-3xl font-bold">Custom</div>
+          <ul class="mt-4 text-sm space-y-2">
+            <li>SSO, RBAC, VPC</li>
+            <li>Private filings</li>
+            <li>SLA & support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS PREVIEW -->
+  <section id="docs" class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">Quickstart (API)</h2>
+      <pre class="card p-4 overflow-x-auto bg-slate-900 text-slate-100 text-sm"><code>curl -X POST https://api.finllm.ai/query \
+  -H "Authorization: Bearer &lt;API_KEY&gt;" \
+  -H "Content-Type: application/json" \
+  -d '{"q":"Top risk drivers for AAPL gross margin 2024","mode":"cited"}'</code></pre>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="card p-8 grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-semibold">See FinLLM in your workflow</h2>
+          <p class="mt-3 text-slate-700">Book a 15-minute session to walk through your filings, KPIs, and integration options.</p>
+        </div>
+        <form class="grid gap-3">
+          <input class="rounded-lg border border-slate-300 px-3 py-2" placeholder="Name" required />
+          <input class="rounded-lg border border-slate-300 px-3 py-2" placeholder="Work email" type="email" required />
+          <textarea class="rounded-lg border border-slate-300 px-3 py-2" rows="3" placeholder="What do you want to analyze?"></textarea>
+          <button class="px-5 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800">Request Demo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-600 flex flex-wrap items-center justify-between gap-3">
+      <div>© <span id="y"></span> FinLLM</div>
+      <div class="flex gap-5">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Status</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
